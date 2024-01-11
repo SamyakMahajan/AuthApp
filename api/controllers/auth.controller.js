@@ -13,6 +13,6 @@ export const signup= async (req,res,next)=> {
     })}
     catch(err){
         // res.status(500).json(err.message);
-        next(error);
+        next(err);
     }
 }
