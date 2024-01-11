@@ -67,7 +67,7 @@ export default function Signin() {
           <span className='text-blue-500'>Sign Up!</span>
           </Link>
       </div>
-      <p className='text-red-500 mt-5'>{error && "Something Went Wrong"}</p>
+      <p className='text-red-500 mt-5'>{error? error.message+"Something Went Wrong":""}</p>
     </div>
   )
 }
