@@ -54,6 +54,8 @@ export const google=async (req,res,next)=>{
             const newUser=new User({username:req.body.name.split(" ").join("").toLowerCase()+Math.floor(Math.random()*10000).toString(),email:req.body.email,password:hashedPassword,profilePicture:photo});
             await newUser.save()
             // res.send
+            const expiryDate=new Date(Date.now()+60000000);
+            
             const {password:hPassword,...rest}=newUser._doc;
         const token=jwt.sign({id:newUser._id},process.env.JWT_SECRET)
             res.cookie('access_token',token,{httpOnly:true, expires:expiryDate}).status(200).json(rest);
